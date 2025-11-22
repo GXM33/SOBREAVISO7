@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Sobreaviso DRV/DEIC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2563eb;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f0f0f0;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        textarea {
+            height: 320px;
+            resize: vertical;
+            font-family: "Courier New", monospace;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btn-copy { background: #2563eb; color: #fff; }
+        .btn-copy:hover { background: #1d4ed8; }
+
+        .btn-whatsapp { background: #16a34a; color: #fff; }
+        .btn-whatsapp:hover { background: #15803d; }
+
+        .btn-clear { background: #6b7280; color: #fff; }
+        .btn-clear:hover { background: #4b5563; }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 18px; }
+            textarea { height: 250px; }
+            .tabs { flex-direction: column; }
+            button { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Gerador de Sobreaviso DRV/DEIC</h1>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab(0)">Buscar por Data</button>
+            <button class="tab-btn" onclick="showTab(1)">Buscar por Pessoa</button>
+        </div>
+
+        <div class="content">
+            <!-- ABA 1: DATA -->
+            <div class="tab-content active" id="tab-data">
+                <label for="date-select">Selecione a </label>
+                <select id="date-select" onchange="searchByDate()">
+                    <option value="">-- Escolha uma data --</option>
+                    <option>01/11/2025</option>
+                    <option>02/11/2025</option>
+                    <option>03/11/2025</option>
+                    <option>04/11/2025</option>
+                    <option>05/11/2025</option>
+                    <option>06/11/2025</option>
+                    <option>07/11/2025</option>
+                    <option>08/11/2025</option>
+                    <option>09/11/2025</option>
+                    <option>10/11/2025</option>
+                    <option>11/11/2025</option>
+                    <option>12/11/2025</option>
+                    <option>13/11/2025</option>
+                    <option>14/11/2025</option>
+                    <option>15/11/2025</option>
+                    <option>16/11/2025</option>
+                    <option>17/11/2025</option>
+                    <option>18/11/2025</option>
+                    <option>19/11/2025</option>
+                    <option>20/11/2025</option>
+                    <option>21/11/2025</option>
+                    <option>22/11/2025</option>
+                    <option>23/11/2025</option>
+                    <option>24/11/2025</option>
+                    <option>25/11/2025</option>
+                    <option>26/11/2025</option>
+                    <option>27/11/2025</option>
+                    <option>28/11/2025</option>
+                    <option>29/11/2025</option>
+                    <option>30/11/2025</option>
+                </select>
+            </div>
+
+            <!-- ABA 2: PESSOA -->
+            <div class="tab-content" id="tab-person">
+                <label for="person-select">Selecione uma pessoa:</label>
+                <select id="person-select" onchange="searchByPerson()">
+                    <option value="">-- Escolha uma pessoa --</option>
+                    <option>Insp. Acauã</option>
+                    <option>Esc. Fernanda Piazza</option>
+                    <option>Insp. Cristiano Soletti</option>
+                    <option>Insp. Teresinha Carivali</option>
+                    <option>Insp. Thiago Meireles</option>
+                    <option>Esc. César da Costa</option>
+                    <option>Insp. Vanessa Trindade</option>
+                    <option>Insp. Juliano Bonacina</option>
+                    <option>Insp. Guilherme Mello</option>
+                    <option>Insp. Tais Boesing</option>
+                    <option>Esc. Jefferson Antoniol</option>
+                    <option>Esc. Luciana Bortoli</option>
+                    <option>Insp. Edna Moraes</option>
+                    <option>Esc. Anderson Saraiva</option>
+                    <option>Insp. Lucas Loss</option>
+                    <option>Insp. Alexandre Brozoza</option>
+                    <option>Esc. Dagoberto O. das Virgens</option>
+                    <option>Insp. Thássia Guterres</option>
+                    <option>Insp. Juliana Tremper</option>
+                    <option>Esc. Cátia Fortunato</option>
+                    <option>Insp. Edmilson Melo</option>
+                </select>
+            </div>
+
+            <textarea id="output" placeholder="O texto do sobreaviso aparecerá aqui..." readonly></textarea>
+
+            <div class="buttons">
+                <button class="btn-copy" onclick="copyText()">Copiar Texto</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp()">Enviar no WhatsApp</button>
+                <button class="btn-clear" onclick="clearAll()">Limpar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Nome curto -> Nome completo
+        var nameMap = {
+            "Cau": "Insp. Acauã",
+            "Piazza": "Esc. Fernanda Piazza",
+            "Cristiano": "Insp. Cristiano Soletti",
+            "Teresinha": "Insp. Teresinha Carivali",
+            "Thiago": "Insp. Thiago Meireles",
+            "César": "Esc. César da Costa",
+            "Vanessa": "Insp. Vanessa Trindade",
+            "Bona": "Insp. Juliano Bonacina",
+            "Gui Mello": "Insp. Guilherme Mello",
+            "Tais": "Insp. Tais Boesing",
+            "Jeff": "Esc. Jefferson Antoniol",
+            "Luciana": "Esc. Luciana Bortoli",
+            "Edna": "Insp. Edna Moraes",
+            "Saraiva": "Esc. Anderson Saraiva",
+            "Loss": "Insp. Lucas Loss",
+            "Brozoza": "Insp. Alexandre Brozoza",
+            "Dago": "Esc. Dagoberto O. das Virgens",
+            "Thássia": "Insp. Thássia Guterres",
+            "Juliana": "Insp. Juliana Tremper",
+            "Cátia": "Esc. Cátia Fortunato",
+            "Melo": "Insp. Edmilson Melo"
+        };
+
+        // Nome curto -> Telefone
+        var phoneMap = {
+            "Cau": "(51) 986859065",
+            "Piazza": "(51) 993605744",
+            "Cristiano": "(51) 995659880",
+            "Teresinha": "(51) 999829606",
+            "Thiago": "(79) 988080613",
+            "César": "(51) 998911160",
+            "Vanessa": "(55) 984278960",
+            "Bona": "(51) 989276060",
+            "Gui Mello": "(51) 981354933",
+            "Tais": "(51) 980549435",
+            "Jeff": "(24) 981002933",
+            "Luciana": "(51) 993935552",
+            "Edna": "(53) 981339654",
+            "Saraiva": "(51) 993879343",
+            "Loss": "(51) 991055571",
+            "Brozoza": "(51) 996500506",
+            "Dago": "(51) 999920066",
+            "Thássia": "(51) 996499862",
+            "Juliana": "(51) 993337587",
+            "Cátia": "(51) 985744501",
+            "Melo": "(51) 983190815"
+        };
+
+        // Nome exibido -> nome curto
+        var peopleShortMap = {
+            "Insp. Acauã": "Cau",
+            "Esc. Fernanda Piazza": "Piazza",
+            "Insp. Cristiano Soletti": "Cristiano",
+            "Insp. Teresinha Carivali": "Teresinha",
+            "Insp. Thiago Meireles": "Thiago",
+            "Esc. César da Costa": "César",
+            "Insp. Vanessa Trindade": "Vanessa",
+            "Insp. Juliano Bonacina": "Bona",
+            "Insp. Guilherme Mello": "Gui Mello",
+            "Insp. Tais Boesing": "Tais",
+            "Esc. Jefferson Antoniol": "Jeff",
+            "Esc. Luciana Bortoli": "Luciana",
+            "Insp. Edna Moraes": "Edna",
+            "Esc. Anderson Saraiva": "Saraiva",
+            "Insp. Lucas Loss": "Loss",
+            "Insp. Alexandre Brozoza": "Brozoza",
+            "Esc. Dagoberto O. das Virgens": "Dago",
+            "Insp. Thássia Guterres": "Thássia",
+            "Insp. Juliana Tremper": "Juliana",
+            "Esc. Cátia Fortunato": "Cátia",
+            "Insp. Edmilson Melo": "Melo"
+        };
+
+        // Escala: sempre usando o nome-curto igual às chaves acima
+        var schedule = {
+            "01/11/2025": ["Cristiano", "Vanessa", "Thiago"],
+            "02/11/2025": ["Cristiano", "Vanessa", "Thiago"],
+            "03/11/2025": ["Piazza", "César", "Vanessa"],
+            "04/11/2025": ["Bona", "Vanessa", "Saraiva"],
+            "05/11/2025": ["Dago", "Thássia", "Thiago"],
+            "06/11/2025": ["Jeff", "Teresinha", "Saraiva"],
+            "07/11/2025": ["Cristiano", "Teresinha", "Thiago"],
+            "08/11/2025": ["Jeff", "Juliana", "Tais"],
+            "09/11/2025": ["Jeff", "Luciana", "Edna"],
+            "10/11/2025": ["Gui Mello", "Bona", "Tais"],
+            "11/11/2025": ["Brozoza", "Loss", "Saraiva"],
+            "12/11/2025": ["Cau", "Luciana", "Edna"],
+            "13/11/2025": ["Melo", "Cátia", "Jeff"],
+            "14/11/2025": ["Piazza", "Bona", "Saraiva"],
+            "15/11/2025": ["Gui Mello", "Thássia", "Saraiva"],
+            "16/11/2025": ["Gui Mello", "Loss", "Saraiva"],
+            "17/11/2025": ["César", "Teresinha", "Jeff"],
+            "18/11/2025": ["Dago", "Cátia", "Edna"],
+            "19/11/2025": ["Jeff", "Thássia", "Saraiva"],
+            "20/11/2025": ["Cristiano", "Juliana", "Thiago"],
+            "21/11/2025": ["Gui Mello", "Melo", "Thiago"],
+            "22/11/2025": ["Brozoza", "Loss", "Thiago"],
+            "23/11/2025": ["Brozoza", "Loss", "Thiago"],
+            "24/11/2025": ["Cau", "Luciana", "Saraiva"],
+            "25/11/2025": ["Brozoza", "Loss", "Vanessa"],
+            "26/11/2025": ["Melo", "Vanessa", "Jeff"],
+            "27/11/2025": ["Piazza", "Gui Mello", "Tais"],
+            "28/11/2025": ["César", "Juliana", "Vanessa"],
+            "29/11/2025": ["Cau", "Luciana", "Edna"],
+            "30/11/2025": ["Cau", "Juliana", "Edna"]
+        };
+
+        function showTab(index) {
+            var contents = document.getElementsByClassName("tab-content");
+            var buttons = document.getElementsByClassName("tab-btn");
+            var i;
+
+            for (i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+                buttons[i].classList.remove("active");
+            }
+
+            contents[index].classList.add("active");
+            buttons[index].classList.add("active");
+            document.getElementById("output").value = "";
+        }
+
+        function buildMessage(date) {
+            var escala = schedule[date];
+            if (!escala) { return ""; }
+
+            var sa01 = escala[0];
+            var sa02 = escala[1];
+            var saNac = escala[2];
+
+            var nome1 = nameMap[sa01];
+            var fone1 = phoneMap[sa01];
+            var nome2 = nameMap[sa02];
+            var fone2 = phoneMap[sa02];
+            var nomeNac = nameMap[saNac];
+            var foneNac = phoneMap[saNac];
+
+            var text = "";
+            text += "*Sobreaviso DRV/DEIC*\n";
+            text += "Data: " + date + "\n\n";
+            text += nome1 + "\n" + fone1 + "\n\n";
+            text += nome2 + "\n" + fone2 + "\n\n";
+            text += "NAC: " + nomeNac + "\n" + foneNac + "\n\n";
+            text += "Chefe de SI: Com. Bruna Caldeira\n";
+            text += "(51) 99139-9403\n\n";
+            text += "Autoridade Policial:\n";
+            text += "Del. Jeiselaure de Souza\n";
+            text += "(51) 99145-8919";
+
+            return text;
+        }
+
+        function searchByDate() {
+            var date = document.getElementById("date-select").value;
+            if (!date) { return; }
+            document.getElementById("output").value = buildMessage(date);
+        }
+
+        function searchByPerson() {
+            var personFull = document.getElementById("person-select").value;
+            if (!personFull) { return; }
+
+            var personShort = peopleShortMap[personFull];
+            var result = "";
+            var first = true;
+
+            // ordenar datas
+            var dates = Object.keys(schedule).sort(function(a, b) {
+                var pa = a.split("/");
+                var pb = b.split("/");
+                var da = new Date(parseInt(pa[2],10), parseInt(pa[1],10)-1, parseInt(pa[0],10));
+                var db = new Date(parseInt(pb[2],10), parseInt(pb[1],10)-1, parseInt(pb[0],10));
