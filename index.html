@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Sobreaviso DRV/DEIC - Polícia Civil Gaúcha</title>
+    <title>Gerador de Sobreaviso DRV/DEIC</title>
     <style>
         * {
             margin: 0;
@@ -12,102 +12,64 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a3a52 0%, #2c3e50 100%);
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
             padding: 20px;
-            color: #2c3e50;
-            min-height: 100vh;
+            color: #333;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(26, 58, 82, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #1a3a52 0%, #2c3e50 100%);
+            background: #2563eb;
             color: white;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .header-content {
-            flex: 1;
+            padding: 30px 20px;
+            text-align: center;
         }
 
         .header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .header-subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-            letter-spacing: 0.3px;
-        }
-
-        .header-logo {
-            width: 140px;
-            height: 140px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            flex-shrink: 0;
-        }
-
-        .header-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: brightness(1.2) contrast(1.1);
+            font-size: 28px;
+            margin-bottom: 5px;
         }
 
         .tabs {
             display: flex;
-            background: #f8f9fa;
-            border-bottom: 3px solid #1a3a52;
+            background: #f0f0f0;
+            border-bottom: 2px solid #ddd;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 16px;
+            padding: 15px;
             border: none;
             background: none;
             cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: bold;
             color: #666;
-            transition: all 0.3s ease;
-            border-bottom: 4px solid transparent;
-            margin-bottom: -3px;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
         }
 
         .tab-btn.active {
             background: white;
-            color: #1a3a52;
-            border-bottom-color: #1a3a52;
+            color: #2563eb;
+            border-bottom-color: #2563eb;
         }
 
         .tab-btn:hover {
-            background: white;
-            color: #1a3a52;
+            background: #f9f9f9;
         }
 
         .content {
-            padding: 35px;
+            padding: 30px;
         }
 
         .tab-content {
@@ -116,53 +78,23 @@
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(5px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         label {
             display: block;
             margin-bottom: 10px;
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 14px;
-            letter-spacing: 0.3px;
+            font-weight: bold;
+            color: #333;
         }
 
         select, textarea {
             width: 100%;
-            padding: 12px 14px;
+            padding: 12px;
             margin-bottom: 20px;
-            border: 2px solid #e0e6ed;
-            border-radius: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             font-size: 14px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
-        }
-
-        select:hover,
-        textarea:hover {
-            border-color: #1a3a52;
-            background: white;
-        }
-
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #1a3a52;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(26, 58, 82, 0.1);
+            font-family: Arial, sans-serif;
         }
 
         select {
@@ -174,23 +106,22 @@
             resize: vertical;
             font-family: 'Courier New', monospace;
             font-size: 13px;
-            line-height: 1.6;
         }
 
         .swap-container {
-            background: #f0f4f8;
-            border: 2px solid #d4dce6;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 20px;
+            padding: 16px;
             margin-bottom: 20px;
         }
 
         .swap-row {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
-            gap: 15px;
+            gap: 12px;
             align-items: end;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .swap-row:last-child {
@@ -198,8 +129,7 @@
         }
 
         .swap-row label {
-            margin-bottom: 8px;
-            font-size: 13px;
+            margin-bottom: 5px;
         }
 
         .swap-row select {
@@ -209,104 +139,62 @@
         .swap-arrow {
             text-align: center;
             font-weight: bold;
-            color: #1a3a52;
-            font-size: 20px;
+            color: #2563eb;
+            font-size: 18px;
         }
 
         .buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         button {
-            padding: 13px 24px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 15px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: bold;
+            transition: all 0.3s;
             flex: 1;
-            min-width: 140px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 120px;
         }
 
         .btn-copy {
-            background: linear-gradient(135deg, #1a3a52 0%, #2c5282 100%);
+            background: #2563eb;
             color: white;
         }
 
         .btn-copy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(26, 58, 82, 0.3);
-        }
-
-        .btn-copy:active {
-            transform: translateY(0);
+            background: #1d4ed8;
         }
 
         .btn-whatsapp {
-            background: linear-gradient(135deg, #25a345 0%, #1d8a3a 100%);
+            background: #16a34a;
             color: white;
         }
 
         .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 163, 69, 0.3);
-        }
-
-        .btn-whatsapp:active {
-            transform: translateY(0);
+            background: #15803d;
         }
 
         .btn-clear {
-            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            background: #6b7280;
             color: white;
         }
 
         .btn-clear:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(108, 117, 125, 0.3);
+            background: #4b5563;
         }
 
-        .btn-clear:active {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
-
+        @media (max-width: 600px) {
             .header h1 {
-                font-size: 24px;
-            }
-
-            .header-logo {
-                width: 110px;
-                height: 110px;
+                font-size: 20px;
             }
 
             .tabs {
                 flex-direction: column;
-            }
-
-            .tab-btn {
-                padding: 12px;
-                font-size: 13px;
-                border-bottom: none;
-                border-right: 4px solid transparent;
-                margin-bottom: 0;
-                margin-right: -3px;
-            }
-
-            .tab-btn.active {
-                border-right-color: #1a3a52;
-                border-bottom: none;
             }
 
             textarea {
@@ -317,6 +205,11 @@
                 min-width: 100%;
             }
 
+            .tab-btn {
+                font-size: 14px;
+                padding: 10px;
+            }
+
             .swap-row {
                 grid-template-columns: 1fr;
             }
@@ -324,36 +217,13 @@
             .swap-arrow {
                 display: none;
             }
-
-            .content {
-                padding: 20px;
-            }
-        }
-
-        .info-badge {
-            display: inline-block;
-            background: #e8f0f8;
-            color: #1a3a52;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-top: 10px;
-            letter-spacing: 0.3px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-content">
-                <h1>📋 Sobreaviso DRV/DEIC</h1>
-                <p class="header-subtitle">Polícia Civil do Rio Grande do Sul</p>
-                <span class="info-badge">Divisão de Roubos e Furtos de Veículos</span>
-            </div>
-            <div class="header-logo">
-                <img src="./images/drv-medalha.jpg" alt="Brasão DRV - Polícia Civil Gaúcha">
-            </div>
+            <h1>📋 Gerador de Sobreaviso DRV/DEIC</h1>
         </div>
 
         <div class="tabs">
@@ -787,19 +657,23 @@
             contents[index].classList.add('active');
             buttons[index].classList.add('active');
 
+            // Restaurar data em todas as abas
             if (lastSelectedDate) {
                 document.getElementById('date-select').value = lastSelectedDate;
                 document.getElementById('swap-date-select').value = lastSelectedDate;
             }
 
+            // Se clicar na aba de Trocas e houver data selecionada, carregar automaticamente
             if (index === 2 && lastSelectedDate) {
                 loadSwapOptions();
             }
 
+            // Se voltar para Data ou Trocas, mostrar o texto da última data
             if ((index === 0 || index === 2) && lastSelectedDate) {
                 document.getElementById('output').value = buildMessage(lastSelectedDate);
             }
 
+            // Se clicar em Pessoa, limpar o textarea
             if (index === 1) {
                 document.getElementById('output').value = '';
                 document.getElementById('person-select').value = '';
