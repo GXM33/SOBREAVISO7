@@ -13,23 +13,23 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            background: #000000;
             padding: 20px;
-            color: #333;
+            color: #ffffff;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: #1a1a1a;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(255, 255, 0, 0.2);
             overflow: hidden;
         }
 
         .header {
-            background: #2563eb;
-            color: white;
+            background: #ffff00;
+            color: #000000;
             padding: 30px 20px;
             text-align: center;
         }
@@ -41,8 +41,8 @@
 
         .tabs {
             display: flex;
-            background: #f0f0f0;
-            border-bottom: 2px solid #ddd;
+            background: #000000;
+            border-bottom: 2px solid #ffff00;
         }
 
         .tab-btn {
@@ -53,19 +53,19 @@
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
-            color: #666;
+            color: #ffffff;
             transition: all 0.3s;
             border-bottom: 3px solid transparent;
         }
 
         .tab-btn.active {
-            background: white;
-            color: #2563eb;
-            border-bottom-color: #2563eb;
+            background: #ffff00;
+            color: #000000;
+            border-bottom-color: #ffff00;
         }
 
         .tab-btn:hover {
-            background: #f9f9f9;
+            background: #333333;
         }
 
         .content {
@@ -84,21 +84,28 @@
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
-            color: #333;
+            color: #ffff00;
         }
 
         select, textarea {
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
-            border: 1px solid #ddd;
+            border: 2px solid #ffff00;
             border-radius: 4px;
             font-size: 14px;
             font-family: Arial, sans-serif;
+            background: #2a2a2a;
+            color: #ffffff;
         }
 
         select {
             cursor: pointer;
+        }
+
+        select option {
+            background: #2a2a2a;
+            color: #ffffff;
         }
 
         textarea {
@@ -109,8 +116,8 @@
         }
 
         .swap-container {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
+            background: #2a2a2a;
+            border: 2px solid #ffff00;
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 20px;
@@ -139,7 +146,7 @@
         .swap-arrow {
             text-align: center;
             font-weight: bold;
-            color: #2563eb;
+            color: #ffff00;
             font-size: 18px;
         }
 
@@ -151,7 +158,7 @@
 
         button {
             padding: 12px 20px;
-            border: none;
+            border: 2px solid #ffff00;
             border-radius: 4px;
             cursor: pointer;
             font-size: 15px;
@@ -162,12 +169,12 @@
         }
 
         .btn-copy {
-            background: #2563eb;
-            color: white;
+            background: #ffff00;
+            color: #000000;
         }
 
         .btn-copy:hover {
-            background: #1d4ed8;
+            background: #ffff66;
         }
 
         .btn-whatsapp {
@@ -180,12 +187,12 @@
         }
 
         .btn-clear {
-            background: #6b7280;
+            background: #dc2626;
             color: white;
         }
 
         .btn-clear:hover {
-            background: #4b5563;
+            background: #b91c1c;
         }
 
         @media (max-width: 600px) {
