@@ -13,23 +13,23 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #000000;
+            background: #f5f5f5;
             padding: 20px;
-            color: #ffffff;
+            color: #333;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: #1a1a1a;
+            background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(255, 255, 0, 0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .header {
-            background: #ffff00;
-            color: #000000;
+            background: #2563eb;
+            color: white;
             padding: 30px 20px;
             text-align: center;
         }
@@ -41,8 +41,8 @@
 
         .tabs {
             display: flex;
-            background: #000000;
-            border-bottom: 2px solid #ffff00;
+            background: #f0f0f0;
+            border-bottom: 2px solid #ddd;
         }
 
         .tab-btn {
@@ -53,19 +53,19 @@
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
-            color: #ffffff;
+            color: #666;
             transition: all 0.3s;
             border-bottom: 3px solid transparent;
         }
 
         .tab-btn.active {
-            background: #ffff00;
-            color: #000000;
-            border-bottom-color: #ffff00;
+            background: white;
+            color: #2563eb;
+            border-bottom-color: #2563eb;
         }
 
         .tab-btn:hover {
-            background: #333333;
+            background: #f9f9f9;
         }
 
         .content {
@@ -84,28 +84,21 @@
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
-            color: #ffff00;
+            color: #333;
         }
 
         select, textarea {
             width: 100%;
             padding: 12px;
             margin-bottom: 20px;
-            border: 2px solid #ffff00;
+            border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 14px;
             font-family: Arial, sans-serif;
-            background: #2a2a2a;
-            color: #ffffff;
         }
 
         select {
             cursor: pointer;
-        }
-
-        select option {
-            background: #2a2a2a;
-            color: #ffffff;
         }
 
         textarea {
@@ -116,8 +109,8 @@
         }
 
         .swap-container {
-            background: #2a2a2a;
-            border: 2px solid #ffff00;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 20px;
@@ -146,8 +139,37 @@
         .swap-arrow {
             text-align: center;
             font-weight: bold;
-            color: #ffff00;
+            color: #2563eb;
             font-size: 18px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filter-row div {
+            flex: 1;
+        }
+
+        .filter-row label {
+            margin-bottom: 8px;
+        }
+
+        .filter-row select {
+            margin-bottom: 0;
+        }
+
+        .month-summary {
+            background: #e3f2fd;
+            border-left: 4px solid #2563eb;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #1d4ed8;
+            display: none;
         }
 
         .buttons {
@@ -158,7 +180,7 @@
 
         button {
             padding: 12px 20px;
-            border: 2px solid #ffff00;
+            border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 15px;
@@ -169,12 +191,12 @@
         }
 
         .btn-copy {
-            background: #ffff00;
-            color: #000000;
+            background: #2563eb;
+            color: white;
         }
 
         .btn-copy:hover {
-            background: #ffff66;
+            background: #1d4ed8;
         }
 
         .btn-whatsapp {
@@ -187,12 +209,12 @@
         }
 
         .btn-clear {
-            background: #dc2626;
+            background: #6b7280;
             color: white;
         }
 
         .btn-clear:hover {
-            background: #b91c1c;
+            background: #4b5563;
         }
 
         @media (max-width: 600px) {
@@ -224,6 +246,15 @@
             .swap-arrow {
                 display: none;
             }
+
+            .filter-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .filter-row div {
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -242,7 +273,7 @@
         <div class="content">
             <!-- ABA 1: BUSCAR POR DATA -->
             <div class="tab-content active">
-                <label for="date-select">Selecione a data:</label>
+                <label for="date-select">Selecione a </label>
                 <select id="date-select" onchange="searchByDate()">
                     <option value="">-- Escolha uma data --</option>
                     <option>01/11/2025</option>
@@ -311,31 +342,45 @@
 
             <!-- ABA 2: BUSCAR POR PESSOA -->
             <div class="tab-content">
-                <label for="person-select">Selecione uma pessoa:</label>
-                <select id="person-select" onchange="searchByPerson()">
-                    <option value="">-- Escolha uma pessoa --</option>
-                    <option>Insp. Acauã</option>
-                    <option>Insp. Alexandre Brozoza</option>
-                    <option>Esc. Anderson Saraiva</option>
-                    <option>Esc. Cátia Fortunato</option>
-                    <option>Esc. César da Costa</option>
-                    <option>Insp. Cristiano Soletti</option>
-                    <option>Esc. Dagoberto O. das Virgens</option>
-                    <option>Insp. Edmilson Melo</option>
-                    <option>Insp. Edna Moraes</option>
-                    <option>Esc. Fernanda Piazza</option>
-                    <option>Insp. Guilherme Mello</option>
-                    <option>Esc. Jefferson Antoniol</option>
-                    <option>Insp. Juliana Tremper</option>
-                    <option>Insp. Juliano Bonacina</option>
-                    <option>Insp. Lucas Loss</option>
-                    <option>Esc. Luciana Bortoli</option>
-                    <option>Insp. Tais Boesing</option>
-                    <option>Insp. Teresinha Carivali</option>
-                    <option>Insp. Thássia Guterres</option>
-                    <option>Insp. Thiago Meireles</option>
-                    <option>Insp. Vanessa Trindade</option>
-                </select>
+                <div class="filter-row">
+                    <div>
+                        <label for="person-select">Selecione uma pessoa:</label>
+                        <select id="person-select" onchange="searchByPerson()">
+                            <option value="">-- Escolha uma pessoa --</option>
+                            <option>Insp. Acauã</option>
+                            <option>Insp. Alexandre Brozoza</option>
+                            <option>Esc. Anderson Saraiva</option>
+                            <option>Esc. Cátia Fortunato</option>
+                            <option>Esc. César da Costa</option>
+                            <option>Insp. Cristiano Soletti</option>
+                            <option>Esc. Dagoberto O. das Virgens</option>
+                            <option>Insp. Edmilson Melo</option>
+                            <option>Insp. Edna Moraes</option>
+                            <option>Esc. Fernanda Piazza</option>
+                            <option>Insp. Guilherme Mello</option>
+                            <option>Esc. Jefferson Antoniol</option>
+                            <option>Insp. Juliana Tremper</option>
+                            <option>Insp. Juliano Bonacina</option>
+                            <option>Insp. Lucas Loss</option>
+                            <option>Esc. Luciana Bortoli</option>
+                            <option>Insp. Tais Boesing</option>
+                            <option>Insp. Teresinha Carivali</option>
+                            <option>Insp. Thássia Guterres</option>
+                            <option>Insp. Thiago Meireles</option>
+                            <option>Insp. Vanessa Trindade</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="month-filter">Filtrar por mês (opcional):</label>
+                        <select id="month-filter" onchange="searchByPerson()">
+                            <option value="">-- Todos os meses --</option>
+                            <option value="11">Novembro 2025</option>
+                            <option value="12">Dezembro 2025</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="month-summary" id="month-summary"></div>
             </div>
 
             <!-- ABA 3: TROCAS -->
@@ -462,13 +507,15 @@
             <div class="buttons">
                 <button class="btn-copy" onclick="copyText()">📋 Copiar Texto</button>
                 <button class="btn-whatsapp" onclick="sendWhatsApp()">💚 Enviar no WhatsApp</button>
-                <button class="btn-clear" onclick="clearAll()">🗑️ Limpar</button>
+                <button class="btn-clear" onclick="clearTab()">🗑️ Limpar</button>
             </div>
         </div>
     </div>
 
     <script>
         let lastSelectedDate = null;
+        let currentTab = 0;
+        let isSearchingByPerson = false;
 
         const nameMap = {
             "Cau": "Insp. Acauã",
@@ -597,37 +644,37 @@
             "28/11/2025": ["César", "Juliana", "Vanessa"],
             "29/11/2025": ["Cau", "Luciana", "Edna"],
             "30/11/2025": ["Cau", "Juliana", "Edna"],
-            "01/12/2025": ["Dago", "Cátia", ""],
-            "02/12/2025": ["Jeff", "Vanessa", ""],
-            "03/12/2025": ["Cristiano", "Juliana", ""],
-            "04/12/2025": ["Gui Mello", "Jeff", ""],
-            "05/12/2025": ["Brozoza", "Loss", ""],
-            "06/12/2025": ["Melo", "Thássia", ""],
-            "07/12/2025": ["Melo", "Thássia", ""],
-            "08/12/2025": ["Cau", "Luciana", ""],
-            "09/12/2025": ["Melo", "Thássia", ""],
-            "10/12/2025": ["Piazza", "Bona", ""],
-            "11/12/2025": ["César", "Teresinha", ""],
-            "12/12/2025": ["Dago", "Cátia", ""],
-            "13/12/2025": ["Piazza", "Bona", ""],
-            "14/12/2025": ["Piazza", "Bona", ""],
-            "15/12/2025": ["Jeff", "Vanessa", ""],
-            "16/12/2025": ["Cristiano", "Juliana", ""],
-            "17/12/2025": ["Gui Mello", "Teresinha", ""],
-            "18/12/2025": ["Brozoza", "Loss", ""],
-            "19/12/2025": ["Cau", "Luciana", ""],
-            "20/12/2025": ["César", "Teresinha", ""],
-            "21/12/2025": ["César", "Teresinha", ""],
-            "22/12/2025": ["Melo", "Thássia", ""],
-            "23/12/2025": ["Piazza", "Bona", ""],
-            "24/12/2025": ["César", "Teresinha", ""],
-            "25/12/2025": ["Dago", "Cátia", ""],
-            "26/12/2025": ["Jeff", "Vanessa", ""],
-            "27/12/2025": ["Dago", "Cátia", ""],
-            "28/12/2025": ["Dago", "Cátia", ""],
-            "29/12/2025": ["Cristiano", "Juliana", ""],
-            "30/12/2025": ["Gui Mello", "Brozoza", ""],
-            "31/12/2025": ["Brozoza", "Loss", ""]
+            "01/12/2025": ["Dago", "Cátia", "Thiago"],
+            "02/12/2025": ["Jeff", "Vanessa", "Edna"],
+            "03/12/2025": ["Gui Mello", "Juliana", "Thiago"],
+            "04/12/2025": ["Gui Mello", "César", "Saraiva"],
+            "05/12/2025": ["Brozoza", "Loss", "Thiago"],
+            "06/12/2025": ["César", "Thássia", "Saraiva"],
+            "07/12/2025": ["César", "Thássia", "Thiago"],
+            "08/12/2025": ["Cau", "Luciana", "Saraiva"],
+            "09/12/2025": ["Melo", "Thássia", "Thiago"],
+            "10/12/2025": ["Piazza", "Bona", "Saraiva"],
+            "11/12/2025": ["Jeff", "Teresinha", "Thiago"],
+            "12/12/2025": ["Dago", "Cátia", "Edna"],
+            "13/12/2025": ["Piazza", "Bona", "Edna"],
+            "14/12/2025": ["Piazza", "Bona", "Edna"],
+            "15/12/2025": ["Jeff", "Vanessa", "Edna"],
+            "16/12/2025": ["Cristiano", "Juliana", "Edna"],
+            "17/12/2025": ["Gui Mello", "Teresinha", "Edna"],
+            "18/12/2025": ["Brozoza", "Loss", "Edna"],
+            "19/12/2025": ["Cau", "Luciana", "Edna"],
+            "20/12/2025": ["Cátia", "Teresinha", "Edna"],
+            "21/12/2025": ["Cátia", "Teresinha", "Edna"],
+            "22/12/2025": ["Melo", "Thássia", "Edna"],
+            "23/12/2025": ["Piazza", "Bona", "Edna"],
+            "24/12/2025": ["César", "Teresinha", "Edna"],
+            "25/12/2025": ["Dago", "Cátia", "Edna"],
+            "26/12/2025": ["Jeff", "Vanessa", "Edna"],
+            "27/12/2025": ["Dago", "Melo", "Edna"],
+            "28/12/2025": ["Dago", "Melo", "Edna"],
+            "29/12/2025": ["Cristiano", "Juliana", "Edna"],
+            "30/12/2025": ["Gui Mello", "Brozoza", "Edna"],
+            "31/12/2025": ["Brozoza", "Loss", "Edna"]
         };
 
         function getTodayBrasilia() {
@@ -642,6 +689,13 @@
             return day + '/' + month + '/' + year;
         }
 
+        function getDayOfWeek(dateString) {
+            const [day, month, year] = dateString.split('/');
+            const date = new Date(year, month - 1, day);
+            const daysOfWeek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+            return daysOfWeek[date.getDay()];
+        }
+
         function sortDates(dates) {
             return dates.sort((a, b) => {
                 const [diaA, mesA, anoA] = a.split('/');
@@ -652,7 +706,16 @@
             });
         }
 
+        function getMonthName(month) {
+            const months = {
+                "11": "Novembro",
+                "12": "Dezembro"
+            };
+            return months[month] || "";
+        }
+
         function showTab(index) {
+            currentTab = index;
             const contents = document.querySelectorAll('.tab-content');
             const buttons = document.querySelectorAll('.tab-btn');
             
@@ -664,26 +727,27 @@
             contents[index].classList.add('active');
             buttons[index].classList.add('active');
 
-            // Restaurar data em todas as abas
-            if (lastSelectedDate) {
-                document.getElementById('date-select').value = lastSelectedDate;
-                document.getElementById('swap-date-select').value = lastSelectedDate;
+            // Se voltar para aba de Data, mostrar data de hoje
+            if (index === 0) {
+                const todayDate = getTodayBrasilia();
+                document.getElementById('date-select').value = todayDate;
+                if (schedule[todayDate]) {
+                    document.getElementById('output').value = buildMessage(todayDate);
+                }
             }
 
             // Se clicar na aba de Trocas e houver data selecionada, carregar automaticamente
             if (index === 2 && lastSelectedDate) {
+                document.getElementById('swap-date-select').value = lastSelectedDate;
                 loadSwapOptions();
             }
 
-            // Se voltar para Data ou Trocas, mostrar o texto da última data
-            if ((index === 0 || index === 2) && lastSelectedDate) {
-                document.getElementById('output').value = buildMessage(lastSelectedDate);
-            }
-
-            // Se clicar em Pessoa, limpar o textarea
+            // Se clicar em Pessoa, limpar o textarea e esconder resumo de mês
             if (index === 1) {
                 document.getElementById('output').value = '';
                 document.getElementById('person-select').value = '';
+                document.getElementById('month-filter').value = '';
+                document.getElementById('month-summary').style.display = 'none';
             }
         }
 
@@ -705,7 +769,15 @@
             const fone2 = phoneMap[sa02];
             
             let text = "*Sobreaviso DRV/DEIC*\n";
-            text += "Data: " + date + "\n\n";
+            
+            // Se estiver buscando por pessoa, adiciona o dia da semana
+            if (isSearchingByPerson) {
+                const dayOfWeek = getDayOfWeek(date);
+                text += "Data: " + date + " (" + dayOfWeek + ")\n\n";
+            } else {
+                text += "Data: " + date + "\n\n";
+            }
+            
             text += nome1 + "\n" + fone1 + "\n\n";
             text += nome2 + "\n" + fone2 + "\n\n";
             
@@ -725,6 +797,7 @@
         }
 
         function searchByDate() {
+            isSearchingByPerson = false;
             const date = document.getElementById('date-select').value;
             if (!date) return;
             lastSelectedDate = date;
@@ -732,9 +805,14 @@
         }
 
         function searchByPerson() {
+            isSearchingByPerson = true;
             const personFull = document.getElementById('person-select').value;
+            const monthFilter = document.getElementById('month-filter').value;
+            const summaryDiv = document.getElementById('month-summary');
+            
             if (!personFull) {
                 document.getElementById('output').value = '';
+                summaryDiv.style.display = 'none';
                 return;
             }
             
@@ -762,9 +840,24 @@
 
             datesFound = sortDates(datesFound);
 
-            result += "Novembro: " + novCount + " sobreavisos\n";
-            result += "Dezembro: " + decCount + " sobreavisos\n\n";
-            result += "════════════════════════════════════════\n\n";
+            // Aplicar filtro de mês se selecionado
+            if (monthFilter) {
+                datesFound = datesFound.filter(date => {
+                    const dateParts = date.split('/');
+                    return dateParts[1] === monthFilter;
+                });
+
+                // Mostrar resumo do mês filtrado
+                const monthName = getMonthName(monthFilter);
+                summaryDiv.textContent = monthName + ": " + datesFound.length + " sobreavisos";
+                summaryDiv.style.display = 'block';
+            } else {
+                // Mostrar resumo de todos os meses
+                result += "Novembro: " + novCount + " sobreavisos\n";
+                result += "Dezembro: " + decCount + " sobreavisos\n\n";
+                result += "════════════════════════════════════════\n\n";
+                summaryDiv.style.display = 'none';
+            }
 
             for (let i = 0; i < datesFound.length; i++) {
                 if (i > 0) {
@@ -777,6 +870,7 @@
         }
 
         function loadSwapOptions() {
+            isSearchingByPerson = false;
             const date = document.getElementById('swap-date-select').value;
             if (!date) {
                 document.getElementById('swap-options-container').style.display = 'none';
@@ -815,6 +909,7 @@
         }
 
         function updateSwapMessage() {
+            isSearchingByPerson = false;
             const date = document.getElementById('swap-date-select').value;
             if (!date) return;
 
@@ -848,13 +943,26 @@
             window.open(`https://wa.me/?text=${encoded}`, '_blank');
         }
 
-        function clearAll() {
+        function clearTab() {
             document.getElementById('output').value = '';
-            document.getElementById('date-select').value = '';
-            document.getElementById('person-select').value = '';
-            document.getElementById('swap-date-select').value = '';
-            document.getElementById('swap-options-container').style.display = 'none';
-            lastSelectedDate = null;
+
+            if (currentTab === 0) {
+                // Aba Buscar por Data
+                document.getElementById('date-select').value = '';
+            } else if (currentTab === 1) {
+                // Aba Buscar por Pessoa
+                document.getElementById('person-select').value = '';
+                document.getElementById('month-filter').value = '';
+                document.getElementById('month-summary').style.display = 'none';
+            } else if (currentTab === 2) {
+                // Aba Trocas
+                document.getElementById('swap-date-select').value = '';
+                document.getElementById('swap-options-container').style.display = 'none';
+                for (let i = 1; i <= 3; i++) {
+                    document.getElementById('swap-person-' + i).value = '';
+                    document.getElementById('swap-for-' + i).value = '';
+                }
+            }
         }
 
         window.addEventListener('DOMContentLoaded', function() {
