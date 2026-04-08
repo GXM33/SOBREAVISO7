@@ -3,266 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Sobreaviso DRV/DEIC</title>
+    <title>Gerador de Sobreaviso DRV/DEIC (Final)</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: #2563eb;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-        .tabs {
-            display: flex;
-            background: #f0f0f0;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            color: #666;
-            transition: all 0.3s;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab-btn.active {
-            background: white;
-            color: #2563eb;
-            border-bottom-color: #2563eb;
-        }
-
-        .tab-btn:hover {
-            background: #f9f9f9;
-        }
-
-        .content {
-            padding: 30px;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-        }
-
-        select {
-            cursor: pointer;
-        }
-
-        textarea {
-            height: 350px;
-            resize: vertical;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-        }
-
-        .swap-container {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        .swap-row {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 12px;
-            align-items: end;
-            margin-bottom: 12px;
-        }
-
-        .swap-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .swap-row label {
-            margin-bottom: 5px;
-        }
-
-        .swap-row select {
-            margin-bottom: 0;
-        }
-
-        .swap-arrow {
-            text-align: center;
-            font-weight: bold;
-            color: #2563eb;
-            font-size: 18px;
-        }
-
-        .filter-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .filter-row div {
-            flex: 1;
-        }
-
-        .filter-row label {
-            margin-bottom: 8px;
-        }
-
-        .filter-row select {
-            margin-bottom: 0;
-        }
-
-        .month-summary {
-            background: #e3f2fd;
-            border-left: 4px solid #2563eb;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #1d4ed8;
-            display: none;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: bold;
-            transition: all 0.3s;
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .btn-copy {
-            background: #2563eb;
-            color: white;
-        }
-
-        .btn-copy:hover {
-            background: #1d4ed8;
-        }
-
-        .btn-whatsapp {
-            background: #16a34a;
-            color: white;
-        }
-
-        .btn-whatsapp:hover {
-            background: #15803d;
-        }
-
-        .btn-clear {
-            background: #6b7280;
-            color: white;
-        }
-
-        .btn-clear:hover {
-            background: #4b5563;
-        }
-
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 20px;
-            }
-
-            .tabs {
-                flex-direction: column;
-            }
-
-            textarea {
-                height: 250px;
-            }
-
-            button {
-                min-width: 100%;
-            }
-
-            .tab-btn {
-                font-size: 14px;
-                padding: 10px;
-            }
-
-            .swap-row {
-                grid-template-columns: 1fr;
-            }
-
-            .swap-arrow {
-                display: none;
-            }
-
-            .filter-row {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .filter-row div {
-                margin-bottom: 15px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: #2563eb; color: white; padding: 30px 20px; text-align: center; }
+        .header h1 { font-size: 28px; margin-bottom: 5px; }
+        .tabs { display: flex; background: #f0f0f0; border-bottom: 2px solid #ddd; }
+        .tab-btn { flex: 1; padding: 15px; border: none; background: none; cursor: pointer; font-size: 16px; font-weight: bold; color: #666; transition: all 0.3s; border-bottom: 3px solid transparent; }
+        .tab-btn.active { background: white; color: #2563eb; border-bottom-color: #2563eb; }
+        .tab-btn:hover { background: #f9f9f9; }
+        .content { padding: 30px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        label { display: block; margin-bottom: 10px; font-weight: bold; color: #333; }
+        select, textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; font-family: Arial, sans-serif; }
+        textarea { height: 350px; resize: vertical; font-family: 'Courier New', monospace; font-size: 13px; }
+        .swap-container { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+        .swap-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: end; margin-bottom: 12px; }
+        .swap-arrow { text-align: center; font-weight: bold; color: #2563eb; font-size: 18px; }
+        .filter-row { display: flex; gap: 15px; margin-bottom: 20px; }
+        .filter-row div { flex: 1; }
+        .month-summary { background: #e3f2fd; border-left: 4px solid #2563eb; padding: 12px; margin-bottom: 15px; border-radius: 4px; font-weight: bold; color: #1d4ed8; display: none; }
+        .buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+        button { padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: bold; transition: all 0.3s; flex: 1; min-width: 120px; }
+        .btn-copy { background: #2563eb; color: white; }
+        .btn-whatsapp { background: #16a34a; color: white; }
+        .btn-clear { background: #6b7280; color: white; }
+        .error-message { background: #fee; border: 1px solid #fcc; color: #c33; padding: 15px; border-radius: 4px; margin-bottom: 20px; display: none; }
+        .sync-badge { font-size: 10px; background: #16a34a; color: white; padding: 2px 6px; border-radius: 10px; vertical-align: middle; margin-left: 5px; }
+        @media (max-width: 600px) { .header h1 { font-size: 20px; } .tabs { flex-direction: column; } .filter-row { flex-direction: column; gap: 0; } .swap-row { grid-template-columns: 1fr; } .swap-arrow { display: none; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📋 Gerador de Sobreaviso DRV/DEIC</h1>
+            <h1>📋 Gerador de Sobreaviso DRV/DEIC <span id="sync-status" class="sync-badge">OFFLINE</span></h1>
+            <p style="font-size: 12px; opacity: 0.8; margin-top: 5px;">Sincronizado com Google Sheets</p>
         </div>
+
+        <div id="error" class="error-message"></div>
 
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab(0)">📅 Buscar por Data</button>
@@ -271,708 +52,308 @@
         </div>
 
         <div class="content">
-            <!-- ABA 1: BUSCAR POR DATA -->
             <div class="tab-content active">
-                <label for="date-select">Selecione a </label>
+                <label for="date-select">Selecione a data:</label>
                 <select id="date-select" onchange="searchByDate()">
                     <option value="">-- Escolha uma data --</option>
-                    <option>01/11/2025</option>
-                    <option>02/11/2025</option>
-                    <option>03/11/2025</option>
-                    <option>04/11/2025</option>
-                    <option>05/11/2025</option>
-                    <option>06/11/2025</option>
-                    <option>07/11/2025</option>
-                    <option>08/11/2025</option>
-                    <option>09/11/2025</option>
-                    <option>10/11/2025</option>
-                    <option>11/11/2025</option>
-                    <option>12/11/2025</option>
-                    <option>13/11/2025</option>
-                    <option>14/11/2025</option>
-                    <option>15/11/2025</option>
-                    <option>16/11/2025</option>
-                    <option>17/11/2025</option>
-                    <option>18/11/2025</option>
-                    <option>19/11/2025</option>
-                    <option>20/11/2025</option>
-                    <option>21/11/2025</option>
-                    <option>22/11/2025</option>
-                    <option>23/11/2025</option>
-                    <option>24/11/2025</option>
-                    <option>25/11/2025</option>
-                    <option>26/11/2025</option>
-                    <option>27/11/2025</option>
-                    <option>28/11/2025</option>
-                    <option>29/11/2025</option>
-                    <option>30/11/2025</option>
-                    <option>01/12/2025</option>
-                    <option>02/12/2025</option>
-                    <option>03/12/2025</option>
-                    <option>04/12/2025</option>
-                    <option>05/12/2025</option>
-                    <option>06/12/2025</option>
-                    <option>07/12/2025</option>
-                    <option>08/12/2025</option>
-                    <option>09/12/2025</option>
-                    <option>10/12/2025</option>
-                    <option>11/12/2025</option>
-                    <option>12/12/2025</option>
-                    <option>13/12/2025</option>
-                    <option>14/12/2025</option>
-                    <option>15/12/2025</option>
-                    <option>16/12/2025</option>
-                    <option>17/12/2025</option>
-                    <option>18/12/2025</option>
-                    <option>19/12/2025</option>
-                    <option>20/12/2025</option>
-                    <option>21/12/2025</option>
-                    <option>22/12/2025</option>
-                    <option>23/12/2025</option>
-                    <option>24/12/2025</option>
-                    <option>25/12/2025</option>
-                    <option>26/12/2025</option>
-                    <option>27/12/2025</option>
-                    <option>28/12/2025</option>
-                    <option>29/12/2025</option>
-                    <option>30/12/2025</option>
-                    <option>31/12/2025</option>
                 </select>
             </div>
 
-            <!-- ABA 2: BUSCAR POR PESSOA -->
             <div class="tab-content">
                 <div class="filter-row">
                     <div>
                         <label for="person-select">Selecione uma pessoa:</label>
                         <select id="person-select" onchange="searchByPerson()">
                             <option value="">-- Escolha uma pessoa --</option>
-                            <option>Insp. Acauã</option>
-                            <option>Insp. Alexandre Brozoza</option>
-                            <option>Esc. Anderson Saraiva</option>
-                            <option>Esc. Cátia Fortunato</option>
-                            <option>Esc. César da Costa</option>
-                            <option>Insp. Cristiano Soletti</option>
-                            <option>Esc. Dagoberto O. das Virgens</option>
-                            <option>Insp. Edmilson Melo</option>
-                            <option>Insp. Edna Moraes</option>
-                            <option>Esc. Fernanda Piazza</option>
-                            <option>Insp. Guilherme Mello</option>
-                            <option>Esc. Jefferson Antoniol</option>
-                            <option>Insp. Juliana Tremper</option>
-                            <option>Insp. Juliano Bonacina</option>
-                            <option>Insp. Lucas Loss</option>
-                            <option>Esc. Luciana Bortoli</option>
-                            <option>Insp. Tais Boesing</option>
-                            <option>Insp. Teresinha Carivali</option>
-                            <option>Insp. Thássia Guterres</option>
-                            <option>Insp. Thiago Meireles</option>
-                            <option>Insp. Vanessa Trindade</option>
                         </select>
                     </div>
                     <div>
-                        <label for="month-filter">Filtrar por mês (opcional):</label>
+                        <label for="month-filter">Filtrar por mês:</label>
                         <select id="month-filter" onchange="searchByPerson()">
                             <option value="">-- Todos os meses --</option>
-                            <option value="11">Novembro 2025</option>
-                            <option value="12">Dezembro 2025</option>
                         </select>
                     </div>
                 </div>
-
                 <div class="month-summary" id="month-summary"></div>
             </div>
 
-            <!-- ABA 3: TROCAS -->
             <div class="tab-content">
-                <label for="swap-date-select">Selecione a data da troca:</label>
+                <label for="swap-date-select">Data da troca:</label>
                 <select id="swap-date-select" onchange="loadSwapOptions()">
                     <option value="">-- Escolha uma data --</option>
-                    <option>01/11/2025</option>
-                    <option>02/11/2025</option>
-                    <option>03/11/2025</option>
-                    <option>04/11/2025</option>
-                    <option>05/11/2025</option>
-                    <option>06/11/2025</option>
-                    <option>07/11/2025</option>
-                    <option>08/11/2025</option>
-                    <option>09/11/2025</option>
-                    <option>10/11/2025</option>
-                    <option>11/11/2025</option>
-                    <option>12/11/2025</option>
-                    <option>13/11/2025</option>
-                    <option>14/11/2025</option>
-                    <option>15/11/2025</option>
-                    <option>16/11/2025</option>
-                    <option>17/11/2025</option>
-                    <option>18/11/2025</option>
-                    <option>19/11/2025</option>
-                    <option>20/11/2025</option>
-                    <option>21/11/2025</option>
-                    <option>22/11/2025</option>
-                    <option>23/11/2025</option>
-                    <option>24/11/2025</option>
-                    <option>25/11/2025</option>
-                    <option>26/11/2025</option>
-                    <option>27/11/2025</option>
-                    <option>28/11/2025</option>
-                    <option>29/11/2025</option>
-                    <option>30/11/2025</option>
-                    <option>01/12/2025</option>
-                    <option>02/12/2025</option>
-                    <option>03/12/2025</option>
-                    <option>04/12/2025</option>
-                    <option>05/12/2025</option>
-                    <option>06/12/2025</option>
-                    <option>07/12/2025</option>
-                    <option>08/12/2025</option>
-                    <option>09/12/2025</option>
-                    <option>10/12/2025</option>
-                    <option>11/12/2025</option>
-                    <option>12/12/2025</option>
-                    <option>13/12/2025</option>
-                    <option>14/12/2025</option>
-                    <option>15/12/2025</option>
-                    <option>16/12/2025</option>
-                    <option>17/12/2025</option>
-                    <option>18/12/2025</option>
-                    <option>19/12/2025</option>
-                    <option>20/12/2025</option>
-                    <option>21/12/2025</option>
-                    <option>22/12/2025</option>
-                    <option>23/12/2025</option>
-                    <option>24/12/2025</option>
-                    <option>25/12/2025</option>
-                    <option>26/12/2025</option>
-                    <option>27/12/2025</option>
-                    <option>28/12/2025</option>
-                    <option>29/12/2025</option>
-                    <option>30/12/2025</option>
-                    <option>31/12/2025</option>
                 </select>
-
                 <div class="swap-container" id="swap-options-container" style="display: none;">
                     <div class="swap-row">
-                        <div>
-                            <label for="swap-person-1">Quem está:</label>
-                            <select id="swap-person-1" onchange="updateSwapMessage()">
-                                <option value="">-- Selecione --</option>
-                            </select>
-                        </div>
+                        <div><label>Quem está:</label><select id="swap-person-1" onchange="updateSwapMessage()"></select></div>
                         <div class="swap-arrow">→</div>
-                        <div>
-                            <label for="swap-for-1">Vai trocar para:</label>
-                            <select id="swap-for-1" onchange="updateSwapMessage()">
-                                <option value="">-- Selecione --</option>
-                            </select>
-                        </div>
+                        <div><label>Troca para:</label><select id="swap-for-1" onchange="updateSwapMessage()"></select></div>
                     </div>
-
                     <div class="swap-row">
-                        <div>
-                            <label for="swap-person-2">Quem está:</label>
-                            <select id="swap-person-2" onchange="updateSwapMessage()">
-                                <option value="">-- Selecione --</option>
-                            </select>
-                        </div>
+                        <div><label>Quem está:</label><select id="swap-person-2" onchange="updateSwapMessage()"></select></div>
                         <div class="swap-arrow">→</div>
-                        <div>
-                            <label for="swap-for-2">Vai trocar para:</label>
-                            <select id="swap-for-2" onchange="updateSwapMessage()">
-                                <option value="">-- Selecione --</option>
-                            </select>
-                        </div>
+                        <div><label>Troca para:</label><select id="swap-for-2" onchange="updateSwapMessage()"></select></div>
                     </div>
-
                     <div class="swap-row">
-                        <div>
-                            <label for="swap-person-3">Quem está:</label>
-                            <select id="swap-person-3" onchange="updateSwapMessage()">
-                                <option value="">-- Selecione --</option>
-                            </select>
-                        </div>
+                        <div><label>Quem está:</label><select id="swap-person-3" onchange="updateSwapMessage()"></select></div>
                         <div class="swap-arrow">→</div>
-                        <div>
-                            <label for="swap-for-3">Vai trocar para:</label>
-                            <select id="swap-for-3" onchange="updateSwapMessage()">
-                                <option value="">-- Selecione --</option>
-                            </select>
-                        </div>
+                        <div><label>Troca para:</label><select id="swap-for-3" onchange="updateSwapMessage()"></select></div>
                     </div>
                 </div>
             </div>
 
-            <textarea id="output" placeholder="O texto do sobreaviso aparecerá aqui..." readonly></textarea>
+            <textarea id="output" placeholder="O texto aparecerá aqui..." readonly></textarea>
 
             <div class="buttons">
                 <button class="btn-copy" onclick="copyText()">📋 Copiar Texto</button>
-                <button class="btn-whatsapp" onclick="sendWhatsApp()">💚 Enviar no WhatsApp</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp()">💚 WhatsApp</button>
                 <button class="btn-clear" onclick="clearTab()">🗑️ Limpar</button>
             </div>
         </div>
     </div>
 
     <script>
+        const SPREADSHEET_ID = '1JdkTcFj05rUPWcCbf_tWc5ym1U9EAmzmb4X2fBvM4LE';
+        const GID = '2099896829';
+        const GViz_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}`;
+
+        let schedule = {
+            // DADOS FIXOS DE ABRIL (CONFORME ÚLTIMA IMAGEM)
+            "01/04/2026": ["quarta-feira", "VANESSA", "JEFF", "GUI MELLO"],
+            "02/04/2026": ["quinta-feira", "DAGO", "TERESINHA", "BONA"],
+            "03/04/2026": ["sexta-feira", "DAGO", "THIAGO", "PIAZZA"],
+            "04/04/2026": ["sábado", "CAU", "MELO", "THÁSSIA"],
+            "05/04/2026": ["domingo", "CAU", "MELO", "THÁSSIA"],
+            "06/04/2026": ["segunda-feira", "TERESINHA", "JEFF", "GUI MELLO"],
+            "07/04/2026": ["terça-feira", "CAU", "MELO", "THÁSSIA"],
+            "08/04/2026": ["quarta-feira", "BONA", "THIAGO", "BROZOZA"],
+            "09/04/2026": ["quinta-feira", "SARAIVA", "CÁTIA", "LAURA"],
+            "10/04/2026": ["sexta-feira", "LOSS", "LUCIANA", "BROZOZA"],
+            "11/04/2026": ["sábado", "LOSS", "SARAIVA", "JULIANA"],
+            "12/04/2026": ["domingo", "LOSS", "BONA", "LAURA"],
+            "13/04/2026": ["segunda-feira", "SARAIVA", "THÁSSIA", "CÉSAR"],
+            "14/04/2026": ["terça-feira", "CÉSAR", "EDNA", "PIAZZA"],
+            "15/04/2026": ["quarta-feira", "VANESSA", "JEFF", "GUI MELLO"],
+            "16/04/2026": ["quinta-feira", "CAU", "MELO", "THÁSSIA"],
+            "17/04/2026": ["sexta-feira", "GUI MELLO", "EDNA", "JULIANA"],
+            "18/04/2026": ["sábado", "EDNA", "CÁTIA", "LAURA"],
+            "19/04/2026": ["domingo", "EDNA", "CÁTIA", "LAURA"],
+            "20/04/2026": ["segunda-feira", "LOSS", "LUCIANA", "BROZOZA"],
+            "21/04/2026": ["terça-feira", "DAGO", "TERESINHA", "CÉSAR"],
+            "22/04/2026": ["quarta-feira", "DAGO", "CÁTIA", "LAURA"],
+            "23/04/2026": ["quinta-feira", "CRISTIANO", "THIAGO", "PIAZZA"],
+            "24/04/2026": ["sexta-feira", "VANESSA", "JEFF", "CRISTIANO"],
+            "25/04/2026": ["sábado", "CRISTIANO", "LUCIANA", "BROZOZA"],
+            "26/04/2026": ["domingo", "CRISTIANO", "LUCIANA", "BROZOZA"],
+            "27/04/2026": ["segunda-feira", "CAU", "MELO", "VANESSA"],
+            "28/04/2026": ["terça-feira", "CRISTIANO", "EDNA", "JULIANA"],
+            "29/04/2026": ["quarta-feira", "DAGO", "CÁTIA", "LAURA"],
+            "30/04/2026": ["quinta-feira", "LOSS", "LUCIANA", "BROZOZA"]
+        };
+
+        const namePhoneData = {
+            "CAU": { full: "Insp. Acauã", phone: "(51) 986859065" },
+            "PIAZZA": { full: "Esc. Fernanda Piazza", phone: "(51) 993605744" },
+            "CRISTIANO": { full: "Insp. Cristiano Soletti", phone: "(51) 995659880" },
+            "TERESINHA": { full: "Com. Teresinha Carivali", phone: "(51) 999829606" },
+            "THIAGO": { full: "Insp. Thiago Meireles", phone: "(79) 988080613" },
+            "CÉSAR": { full: "Esc. César da Costa", phone: "(51) 998911160" },
+            "VANESSA": { full: "Insp. Vanessa Trindade", phone: "(55) 984278960" },
+            "BONA": { full: "Insp. Juliano Bonacina", phone: "(51) 989276060" },
+            "GUI MELLO": { full: "Insp. Guilherme Mello", phone: "(51) 981354933" },
+            "TAIS": { full: "Insp. Tais Boesing", phone: "(51) 980549435" },
+            "JEFF": { full: "Esc. Jefferson Antoniol", phone: "(24) 981002933" },
+            "LUCIANA": { full: "Esc. Luciana Bortoli", phone: "(51) 993935552" },
+            "EDNA": { full: "Insp. Edna Moraes", phone: "(53) 981339654" },
+            "SARAIVA": { full: "Esc. Anderson Saraiva", phone: "(51) 993879343" },
+            "LOSS": { full: "Insp. Lucas Loss", phone: "(51) 991055571" },
+            "BROZOZA": { full: "Insp. Alexandre Brozoza", phone: "(51) 996500506" },
+            "DAGO": { full: "Esc. Dagoberto O. das Virgens", phone: "(51) 999920066" },
+            "THÁSSIA": { full: "Insp. Thássia Guterres", phone: "(51) 996499862" },
+            "JULIANA": { full: "Insp. Juliana Tremper", phone: "(51) 993337587" },
+            "CÁTIA": { full: "Esc. Cátia Fortunato", phone: "(51) 985744501" },
+            "MELO": { full: "Insp. Edmilson Melo", phone: "(51) 983190815" },
+            "JUCI": { full: "Insp. Jucinéia Morales", phone: "(51) 984006467" },
+            "LAURA": { full: "Esc. Laura", phone: "(51) 000000000" }
+        };
+
+        let nameMap = {};
+        let phoneMap = {};
+        let peopleShortMap = {};
+        let allPeople = [];
+        let monthsAvailable = new Set();
         let lastSelectedDate = null;
         let currentTab = 0;
         let isSearchingByPerson = false;
 
-        const nameMap = {
-            "Cau": "Insp. Acauã",
-            "Piazza": "Esc. Fernanda Piazza",
-            "Cristiano": "Insp. Cristiano Soletti",
-            "Teresinha": "Insp. Teresinha Carivali",
-            "Thiago": "Insp. Thiago Meireles",
-            "César": "Esc. César da Costa",
-            "Vanessa": "Insp. Vanessa Trindade",
-            "Bona": "Insp. Juliano Bonacina",
-            "Gui Mello": "Insp. Guilherme Mello",
-            "Tais": "Insp. Tais Boesing",
-            "Jeff": "Esc. Jefferson Antoniol",
-            "Luciana": "Esc. Luciana Bortoli",
-            "Edna": "Insp. Edna Moraes",
-            "Saraiva": "Esc. Anderson Saraiva",
-            "Loss": "Insp. Lucas Loss",
-            "Brozoza": "Insp. Alexandre Brozoza",
-            "Dago": "Esc. Dagoberto O. das Virgens",
-            "Thássia": "Insp. Thássia Guterres",
-            "Juliana": "Insp. Juliana Tremper",
-            "Cátia": "Esc. Cátia Fortunato",
-            "Melo": "Insp. Edmilson Melo"
-        };
+        async function loadSheetsData() {
+            try {
+                const response = await fetch(GViz_URL);
+                const text = await response.text();
+                const json = JSON.parse(text.substring(47, text.length - 2));
+                const rows = json.table.rows;
+                const cols = json.table.cols;
+                
+                let colMap = {};
+                cols.forEach((c, i) => {
+                    if (c.label === "Data") colMap.data = i;
+                    if (c.label === "Dia da Semana") colMap.dia = i;
+                    if (c.label === "SA 01") colMap.sa1 = i;
+                    if (c.label === "SA 02") colMap.sa2 = i;
+                    if (c.label === "SA 03") colMap.sa3 = i;
+                });
 
-        const phoneMap = {
-            "Cau": "(51) 986859065",
-            "Piazza": "(51) 993605744",
-            "Cristiano": "(51) 995659880",
-            "Teresinha": "(51) 999829606",
-            "Thiago": "(79) 988080613",
-            "César": "(51) 998911160",
-            "Vanessa": "(55) 984278960",
-            "Bona": "(51) 989276060",
-            "Gui Mello": "(51) 981354933",
-            "Tais": "(51) 980549435",
-            "Jeff": "(24) 981002933",
-            "Luciana": "(51) 993935552",
-            "Edna": "(53) 981339654",
-            "Saraiva": "(51) 993879343",
-            "Loss": "(51) 991055571",
-            "Brozoza": "(51) 996500506",
-            "Dago": "(51) 999920066",
-            "Thássia": "(51) 996499862",
-            "Juliana": "(51) 993337587",
-            "Cátia": "(51) 985744501",
-            "Melo": "(51) 983190815"
-        };
+                rows.forEach(r => {
+                    const date = r.c[colMap.data]?.f || r.c[colMap.data]?.v;
+                    if (date && date.includes('/')) {
+                        const day = r.c[colMap.dia]?.v || '';
+                        const sa1 = (r.c[colMap.sa1]?.v || '').trim().toUpperCase();
+                        const sa2 = (r.c[colMap.sa2]?.v || '').trim().toUpperCase();
+                        const sa3 = (r.c[colMap.sa3]?.v || '').trim().toUpperCase();
+                        if (sa1) schedule[date] = [day, sa1, sa2, sa3];
+                    }
+                });
+                document.getElementById('sync-status').textContent = "ONLINE";
+                document.getElementById('sync-status').style.background = "#16a34a";
+            } catch (e) {
+                console.log("Usando dados offline (Abril)");
+                document.getElementById('sync-status').textContent = "OFFLINE";
+                document.getElementById('sync-status').style.background = "#6b7280";
+            }
+            finalizeInit();
+        }
 
-        const peopleShortMap = {
-            "Insp. Acauã": "Cau",
-            "Insp. Alexandre Brozoza": "Brozoza",
-            "Esc. Anderson Saraiva": "Saraiva",
-            "Esc. Cátia Fortunato": "Cátia",
-            "Esc. César da Costa": "César",
-            "Insp. Cristiano Soletti": "Cristiano",
-            "Esc. Dagoberto O. das Virgens": "Dago",
-            "Insp. Edmilson Melo": "Melo",
-            "Insp. Edna Moraes": "Edna",
-            "Esc. Fernanda Piazza": "Piazza",
-            "Insp. Guilherme Mello": "Gui Mello",
-            "Esc. Jefferson Antoniol": "Jeff",
-            "Insp. Juliana Tremper": "Juliana",
-            "Insp. Juliano Bonacina": "Bona",
-            "Insp. Lucas Loss": "Loss",
-            "Esc. Luciana Bortoli": "Luciana",
-            "Insp. Tais Boesing": "Tais",
-            "Insp. Teresinha Carivali": "Teresinha",
-            "Insp. Thássia Guterres": "Thássia",
-            "Insp. Thiago Meireles": "Thiago",
-            "Insp. Vanessa Trindade": "Vanessa"
-        };
+        function finalizeInit() {
+            Object.keys(schedule).forEach(date => {
+                const m = date.split('/')[1];
+                monthsAvailable.add(m);
+                schedule[date].slice(1).forEach(p => {
+                    if (p && namePhoneData[p]) {
+                        const d = namePhoneData[p];
+                        nameMap[p] = d.full;
+                        phoneMap[p] = d.phone;
+                        peopleShortMap[d.full] = p;
+                        if (!allPeople.includes(d.full)) allPeople.push(d.full);
+                    }
+                });
+            });
+            allPeople.sort((a, b) => a.localeCompare(b, 'pt-BR'));
+            initializeApp();
+        }
 
-        const allPeople = [
-            "Insp. Acauã",
-            "Insp. Alexandre Brozoza",
-            "Esc. Anderson Saraiva",
-            "Esc. Cátia Fortunato",
-            "Esc. César da Costa",
-            "Insp. Cristiano Soletti",
-            "Esc. Dagoberto O. das Virgens",
-            "Insp. Edmilson Melo",
-            "Insp. Edna Moraes",
-            "Esc. Fernanda Piazza",
-            "Insp. Guilherme Mello",
-            "Esc. Jefferson Antoniol",
-            "Insp. Juliana Tremper",
-            "Insp. Juliano Bonacina",
-            "Insp. Lucas Loss",
-            "Esc. Luciana Bortoli",
-            "Insp. Tais Boesing",
-            "Insp. Teresinha Carivali",
-            "Insp. Thássia Guterres",
-            "Insp. Thiago Meireles",
-            "Insp. Vanessa Trindade"
-        ];
+        function initializeApp() {
+            populateDateSelects();
+            populatePersonSelect();
+            populateMonthFilter();
+            const today = getTodayBrasilia();
+            if (schedule[today]) {
+                document.getElementById('date-select').value = today;
+                searchByDate();
+            }
+        }
 
-        const schedule = {
-            "01/11/2025": ["Cristiano", "Vanessa", "Thiago"],
-            "02/11/2025": ["Cristiano", "Vanessa", "Thiago"],
-            "03/11/2025": ["Piazza", "César", "Vanessa"],
-            "04/11/2025": ["Bona", "Vanessa", "Saraiva"],
-            "05/11/2025": ["Dago", "Thássia", "Thiago"],
-            "06/11/2025": ["Jeff", "Teresinha", "Saraiva"],
-            "07/11/2025": ["Cristiano", "Teresinha", "Thiago"],
-            "08/11/2025": ["Jeff", "Juliana", "Tais"],
-            "09/11/2025": ["Jeff", "Luciana", "Edna"],
-            "10/11/2025": ["Gui Mello", "Bona", "Tais"],
-            "11/11/2025": ["Brozoza", "Loss", "Saraiva"],
-            "12/11/2025": ["Cau", "Luciana", "Edna"],
-            "13/11/2025": ["Melo", "Cátia", "Jeff"],
-            "14/11/2025": ["Piazza", "Bona", "Saraiva"],
-            "15/11/2025": ["Gui Mello", "Thássia", "Saraiva"],
-            "16/11/2025": ["Gui Mello", "Loss", "Saraiva"],
-            "17/11/2025": ["César", "Teresinha", "Jeff"],
-            "18/11/2025": ["Dago", "Cátia", "Edna"],
-            "19/11/2025": ["Jeff", "Thássia", "Saraiva"],
-            "20/11/2025": ["Cristiano", "Juliana", "Thiago"],
-            "21/11/2025": ["Gui Mello", "Melo", "Thiago"],
-            "22/11/2025": ["Brozoza", "Loss", "Thiago"],
-            "23/11/2025": ["Brozoza", "Loss", "Thiago"],
-            "24/11/2025": ["Cau", "Luciana", "Saraiva"],
-            "25/11/2025": ["Brozoza", "Loss", "Vanessa"],
-            "26/11/2025": ["Melo", "Vanessa", "Jeff"],
-            "27/11/2025": ["Piazza", "Gui Mello", "Tais"],
-            "28/11/2025": ["César", "Juliana", "Vanessa"],
-            "29/11/2025": ["Cau", "Luciana", "Edna"],
-            "30/11/2025": ["Cau", "Juliana", "Edna"],
-            "01/12/2025": ["Dago", "Cátia", "Thiago"],
-            "02/12/2025": ["Jeff", "Vanessa", "Edna"],
-            "03/12/2025": ["Gui Mello", "Juliana", "Thiago"],
-            "04/12/2025": ["Gui Mello", "César", "Saraiva"],
-            "05/12/2025": ["Brozoza", "Loss", "Thiago"],
-            "06/12/2025": ["César", "Thássia", "Saraiva"],
-            "07/12/2025": ["César", "Thássia", "Thiago"],
-            "08/12/2025": ["Cau", "Luciana", "Saraiva"],
-            "09/12/2025": ["Melo", "Thássia", "Thiago"],
-            "10/12/2025": ["Piazza", "Bona", "Saraiva"],
-            "11/12/2025": ["Jeff", "Teresinha", "Thiago"],
-            "12/12/2025": ["Dago", "Cátia", "Edna"],
-            "13/12/2025": ["Piazza", "Bona", "Edna"],
-            "14/12/2025": ["Piazza", "Bona", "Edna"],
-            "15/12/2025": ["Jeff", "Vanessa", "Edna"],
-            "16/12/2025": ["Cristiano", "Juliana", "Edna"],
-            "17/12/2025": ["Gui Mello", "Teresinha", "Edna"],
-            "18/12/2025": ["Brozoza", "Loss", "Edna"],
-            "19/12/2025": ["Cau", "Luciana", "Edna"],
-            "20/12/2025": ["Cátia", "Teresinha", "Edna"],
-            "21/12/2025": ["Cátia", "Teresinha", "Edna"],
-            "22/12/2025": ["Melo", "Thássia", "Edna"],
-            "23/12/2025": ["Piazza", "Bona", "Edna"],
-            "24/12/2025": ["César", "Teresinha", "Edna"],
-            "25/12/2025": ["Dago", "Cátia", "Edna"],
-            "26/12/2025": ["Jeff", "Vanessa", "Edna"],
-            "27/12/2025": ["Dago", "Melo", "Edna"],
-            "28/12/2025": ["Dago", "Melo", "Edna"],
-            "29/12/2025": ["Cristiano", "Juliana", "Edna"],
-            "30/12/2025": ["Gui Mello", "Brozoza", "Edna"],
-            "31/12/2025": ["Brozoza", "Loss", "Edna"]
-        };
+        function populateDateSelects() {
+            const dates = Object.keys(schedule).sort((a,b) => {
+                const [da, ma, aa] = a.split('/'); const [db, mb, ab] = b.split('/');
+                return new Date(aa, ma-1, da) - new Date(ab, mb-1, db);
+            });
+            const dS = document.getElementById('date-select');
+            const sS = document.getElementById('swap-date-select');
+            dS.innerHTML = '<option value="">-- Escolha uma data --</option>';
+            sS.innerHTML = '<option value="">-- Escolha uma data --</option>';
+            dates.forEach(d => { dS.add(new Option(d, d)); sS.add(new Option(d, d)); });
+        }
+
+        function populatePersonSelect() {
+            const pS = document.getElementById('person-select');
+            pS.innerHTML = '<option value="">-- Escolha uma pessoa --</option>';
+            allPeople.forEach(p => pS.add(new Option(p, p)));
+        }
+
+        function populateMonthFilter() {
+            const names = {"01":"Janeiro","02":"Fevereiro","03":"Março","04":"Abril","05":"Maio","06":"Junho","07":"Julho","08":"Agosto","09":"Setembro","10":"Outubro","11":"Novembro","12":"Dezembro"};
+            const mF = document.getElementById('month-filter');
+            mF.innerHTML = '<option value="">-- Todos os meses --</option>';
+            Array.from(monthsAvailable).sort().forEach(m => mF.add(new Option(names[m] + " 2026", m)));
+        }
 
         function getTodayBrasilia() {
-            const now = new Date();
-            const offset = -3;
-            const brasiliaTime = new Date(now.getTime() + offset * 60 * 60 * 1000);
-            
-            const day = String(brasiliaTime.getUTCDate()).padStart(2, '0');
-            const month = String(brasiliaTime.getUTCMonth() + 1).padStart(2, '0');
-            const year = brasiliaTime.getUTCFullYear();
-            
-            return day + '/' + month + '/' + year;
+            const d = new Date(new Date().getTime() - 3 * 3600 * 1000);
+            return `${String(d.getUTCDate()).padStart(2,'0')}/${String(d.getUTCMonth()+1).padStart(2,'0')}/${d.getUTCFullYear()}`;
         }
 
-        function getDayOfWeek(dateString) {
-            const [day, month, year] = dateString.split('/');
-            const date = new Date(year, month - 1, day);
-            const daysOfWeek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-            return daysOfWeek[date.getDay()];
-        }
-
-        function sortDates(dates) {
-            return dates.sort((a, b) => {
-                const [diaA, mesA, anoA] = a.split('/');
-                const [diaB, mesB, anoB] = b.split('/');
-                const dataA = new Date(anoA, mesA - 1, diaA);
-                const dataB = new Date(anoB, mesB - 1, diaB);
-                return dataA - dataB;
-            });
-        }
-
-        function getMonthName(month) {
-            const months = {
-                "11": "Novembro",
-                "12": "Dezembro"
-            };
-            return months[month] || "";
-        }
-
-        function showTab(index) {
-            currentTab = index;
-            const contents = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-btn');
-            
-            contents.forEach((c, i) => {
-                c.classList.remove('active');
-                buttons[i].classList.remove('active');
-            });
-            
-            contents[index].classList.add('active');
-            buttons[index].classList.add('active');
-
-            // Se voltar para aba de Data, mostrar data de hoje
-            if (index === 0) {
-                const todayDate = getTodayBrasilia();
-                document.getElementById('date-select').value = todayDate;
-                if (schedule[todayDate]) {
-                    document.getElementById('output').value = buildMessage(todayDate);
-                }
-            }
-
-            // Se clicar na aba de Trocas e houver data selecionada, carregar automaticamente
-            if (index === 2 && lastSelectedDate) {
-                document.getElementById('swap-date-select').value = lastSelectedDate;
-                loadSwapOptions();
-            }
-
-            // Se clicar em Pessoa, limpar o textarea e esconder resumo de mês
-            if (index === 1) {
-                document.getElementById('output').value = '';
-                document.getElementById('person-select').value = '';
-                document.getElementById('month-filter').value = '';
-                document.getElementById('month-summary').style.display = 'none';
-            }
+        function showTab(i) {
+            currentTab = i;
+            document.querySelectorAll('.tab-content').forEach((c, idx) => c.classList.toggle('active', idx === i));
+            document.querySelectorAll('.tab-btn').forEach((b, idx) => b.classList.toggle('active', idx === i));
+            if (i === 0) searchByDate();
+            if (i === 2 && lastSelectedDate) loadSwapOptions();
         }
 
         function buildMessage(date, swaps = null) {
-            let escala = schedule[date];
-            if (!escala) return "";
-            
-            let [sa01, sa02, saNac] = escala;
-
+            const e = schedule[date]; if (!e) return "";
+            let [day, sa1, sa2, sa3] = e;
             if (swaps) {
-                if (swaps[0]) sa01 = peopleShortMap[swaps[0]];
-                if (swaps[1]) sa02 = peopleShortMap[swaps[1]];
-                if (swaps[2]) saNac = peopleShortMap[swaps[2]];
+                if (swaps[0]) sa1 = peopleShortMap[swaps[0]];
+                if (swaps[1]) sa2 = peopleShortMap[swaps[1]];
+                if (swaps[2]) sa3 = peopleShortMap[swaps[2]];
             }
-
-            const nome1 = nameMap[sa01];
-            const fone1 = phoneMap[sa01];
-            const nome2 = nameMap[sa02];
-            const fone2 = phoneMap[sa02];
-            
-            let text = "*Sobreaviso DRV/DEIC*\n";
-            
-            // Se estiver buscando por pessoa, adiciona o dia da semana
-            if (isSearchingByPerson) {
-                const dayOfWeek = getDayOfWeek(date);
-                text += "Data: " + date + " (" + dayOfWeek + ")\n\n";
-            } else {
-                text += "Data: " + date + "\n\n";
-            }
-            
-            text += nome1 + "\n" + fone1 + "\n\n";
-            text += nome2 + "\n" + fone2 + "\n\n";
-            
-            if (saNac && saNac !== "") {
-                const nomeNac = nameMap[saNac];
-                const foneNac = phoneMap[saNac];
-                text += "NAC: " + nomeNac + "\n" + foneNac + "\n\n";
-            }
-            
-            text += "Chefe de SI: Com. Bruna Caldeira\n";
-            text += "(51) 99139-9403\n\n";
-            text += "Autoridade Policial:\n";
-            text += "Del. Jeiselaure de Souza\n";
-            text += "(51) 99145-8919";
-            
+            let text = `*Sobreaviso DRV/DEIC*\nData: ${date}${isSearchingByPerson ? ` (${day})` : ''}\n\n`;
+            if (nameMap[sa1]) text += `${nameMap[sa1]}\n${phoneMap[sa1]}\n\n`;
+            if (nameMap[sa2]) text += `${nameMap[sa2]}\n${phoneMap[sa2]}\n\n`;
+            if (nameMap[sa3]) text += `${nameMap[sa3]}\n${phoneMap[sa3]}\n\n`;
+            text += "Chefe de SI: Com. Bruna Caldeira\n(51) 99139-9403\n\nAutoridade Policial:\nDel. Jeiselaure de Souza\n(51) 99145-8919";
             return text;
         }
 
         function searchByDate() {
             isSearchingByPerson = false;
-            const date = document.getElementById('date-select').value;
-            if (!date) return;
-            lastSelectedDate = date;
-            document.getElementById('output').value = buildMessage(date);
+            const d = document.getElementById('date-select').value;
+            if (d) { lastSelectedDate = d; document.getElementById('output').value = buildMessage(d); }
         }
 
         function searchByPerson() {
             isSearchingByPerson = true;
-            const personFull = document.getElementById('person-select').value;
-            const monthFilter = document.getElementById('month-filter').value;
-            const summaryDiv = document.getElementById('month-summary');
-            
-            if (!personFull) {
-                document.getElementById('output').value = '';
-                summaryDiv.style.display = 'none';
-                return;
-            }
-            
-            const personShort = peopleShortMap[personFull];
-            let result = '';
-            let novCount = 0;
-            let decCount = 0;
-            let datesFound = [];
-
-            for (let date in schedule) {
-                const escala = schedule[date];
-                const sa01 = escala[0];
-                const sa02 = escala[1];
-                const saNac = escala[2];
-                
-                if (sa01 === personShort || sa02 === personShort || saNac === personShort) {
-                    datesFound.push(date);
-                    if (date.includes("/11/")) {
-                        novCount++;
-                    } else if (date.includes("/12/")) {
-                        decCount++;
-                    }
-                }
-            }
-
-            datesFound = sortDates(datesFound);
-
-            // Aplicar filtro de mês se selecionado
-            if (monthFilter) {
-                datesFound = datesFound.filter(date => {
-                    const dateParts = date.split('/');
-                    return dateParts[1] === monthFilter;
-                });
-
-                // Mostrar resumo do mês filtrado
-                const monthName = getMonthName(monthFilter);
-                summaryDiv.textContent = monthName + ": " + datesFound.length + " sobreavisos";
-                summaryDiv.style.display = 'block';
-            } else {
-                // Mostrar resumo de todos os meses
-                result += "Novembro: " + novCount + " sobreavisos\n";
-                result += "Dezembro: " + decCount + " sobreavisos\n\n";
-                result += "════════════════════════════════════════\n\n";
-                summaryDiv.style.display = 'none';
-            }
-
-            for (let i = 0; i < datesFound.length; i++) {
-                if (i > 0) {
-                    result += "\n\n════════════════════════════════════════\n\n";
-                }
-                result += buildMessage(datesFound[i]);
-            }
-            
-            document.getElementById('output').value = result;
+            const p = document.getElementById('person-select').value;
+            const m = document.getElementById('month-filter').value;
+            if (!p) return;
+            const short = peopleShortMap[p];
+            let dates = Object.keys(schedule).filter(d => schedule[d].slice(1).includes(short));
+            if (m) dates = dates.filter(d => d.split('/')[1] === m);
+            dates.sort((a,b) => {
+                const [da, ma, aa] = a.split('/'); const [db, mb, ab] = b.split('/');
+                return new Date(aa, ma-1, da) - new Date(ab, mb-1, db);
+            });
+            document.getElementById('output').value = dates.map(d => buildMessage(d)).join("\n\n════════════════════════════════════════\n\n");
+            document.getElementById('month-summary').textContent = m ? `${p}: ${dates.length} sobreavisos` : '';
+            document.getElementById('month-summary').style.display = m ? 'block' : 'none';
         }
 
         function loadSwapOptions() {
-            isSearchingByPerson = false;
-            const date = document.getElementById('swap-date-select').value;
-            if (!date) {
-                document.getElementById('swap-options-container').style.display = 'none';
-                return;
-            }
-
-            lastSelectedDate = date;
-
-            const escala = schedule[date];
-            if (!escala) return;
-
-            const [sa01Short, sa02Short, saNacShort] = escala;
-            const names = [];
-            names[0] = nameMap[sa01Short];
-            names[1] = nameMap[sa02Short];
-            if (saNacShort && saNacShort !== "") {
-                names[2] = nameMap[saNacShort];
-            } else {
-                names[2] = "(Sem NAC neste dia)";
-            }
-
+            const d = document.getElementById('swap-date-select').value || lastSelectedDate;
+            if (!d || !schedule[d]) return;
+            document.getElementById('swap-date-select').value = d;
+            const e = schedule[d];
             for (let i = 1; i <= 3; i++) {
-                const elem = document.getElementById('swap-person-' + i);
-                elem.innerHTML = '<option value="">-- ' + names[i-1] + ' --</option>';
-                elem.value = '';
-
-                const forElem = document.getElementById('swap-for-' + i);
-                forElem.innerHTML = '<option value="">-- Selecione --</option>';
-                allPeople.forEach(person => {
-                    forElem.innerHTML += '<option value="' + person + '">' + person + '</option>';
-                });
+                const pS = document.getElementById('swap-person-' + i);
+                const fS = document.getElementById('swap-for-' + i);
+                const current = nameMap[e[i]] || "(Vazio)";
+                pS.innerHTML = `<option value="">-- ${current} --</option>`;
+                fS.innerHTML = '<option value="">-- Selecione --</option>';
+                allPeople.forEach(p => fS.add(new Option(p, p)));
             }
-
             document.getElementById('swap-options-container').style.display = 'block';
-            updateSwapMessage();
         }
 
         function updateSwapMessage() {
-            isSearchingByPerson = false;
-            const date = document.getElementById('swap-date-select').value;
-            if (!date) return;
-
-            const swaps = [];
-            for (let i = 1; i <= 3; i++) {
-                const forVal = document.getElementById('swap-for-' + i).value;
-                swaps.push(forVal || null);
-            }
-
-            document.getElementById('output').value = buildMessage(date, swaps);
+            const swaps = [1,2,3].map(i => document.getElementById('swap-for-'+i).value);
+            document.getElementById('output').value = buildMessage(document.getElementById('swap-date-select').value, swaps);
         }
 
-        function copyText() {
-            const text = document.getElementById('output').value;
-            if (!text) {
-                alert('Nenhum texto para copiar!');
-                return;
-            }
-            navigator.clipboard.writeText(text).then(() => {
-                alert('✅ Texto copiado!');
-            });
-        }
+        function copyText() { document.getElementById('output').select(); document.execCommand('copy'); alert('Copiado!'); }
+        function sendWhatsApp() { window.open('https://wa.me/?text=' + encodeURIComponent(document.getElementById('output').value), '_blank'); }
+        function clearTab() { document.getElementById('output').value = ''; }
 
-        function sendWhatsApp() {
-            const text = document.getElementById('output').value;
-            if (!text) {
-                alert('Nenhum texto para enviar!');
-                return;
-            }
-            const encoded = encodeURIComponent(text);
-            window.open(`https://wa.me/?text=${encoded}`, '_blank');
-        }
-
-        function clearTab() {
-            document.getElementById('output').value = '';
-
-            if (currentTab === 0) {
-                // Aba Buscar por Data
-                document.getElementById('date-select').value = '';
-            } else if (currentTab === 1) {
-                // Aba Buscar por Pessoa
-                document.getElementById('person-select').value = '';
-                document.getElementById('month-filter').value = '';
-                document.getElementById('month-summary').style.display = 'none';
-            } else if (currentTab === 2) {
-                // Aba Trocas
-                document.getElementById('swap-date-select').value = '';
-                document.getElementById('swap-options-container').style.display = 'none';
-                for (let i = 1; i <= 3; i++) {
-                    document.getElementById('swap-person-' + i).value = '';
-                    document.getElementById('swap-for-' + i).value = '';
-                }
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', function() {
-            const todayDate = getTodayBrasilia();
-            if (schedule[todayDate]) {
-                lastSelectedDate = todayDate;
-                document.getElementById('date-select').value = todayDate;
-                document.getElementById('output').value = buildMessage(todayDate);
-            }
-        });
+        window.onload = loadSheetsData;
     </script>
 </body>
 </html>
